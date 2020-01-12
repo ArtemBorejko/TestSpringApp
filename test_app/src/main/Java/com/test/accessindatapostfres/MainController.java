@@ -23,12 +23,41 @@ public class MainController {
         return "Student saved";
     }
 
+    @PostMapping(path = "/updS")
+    public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name, @RequestParam int group_id){
+        Student s = studentRepository.findById(id).get();
+        s.setGroup_id(group_id);
+        s.setName(name);
+        studentRepository.save(s);
+        return "Student updated!";
+    }
+
+    @PostMapping(path = "/delS")
+    public @ResponseBody String deleteStudent(@RequestParam int id){
+        studentRepository.deleteById(id);
+        return "Student deleted!";
+    }
+
     @PostMapping(path = "/addG")
     public @ResponseBody String addNewGroup(@RequestParam String name){
         Group g = new Group();
         g.setName(name);
         groupRepository.save(g);
         return "Group saved";
+    }
+
+    @PostMapping(path = "/updG")
+    public @ResponseBody String updateGroup(@RequestParam int id, @RequestParam String name) {
+        Group g = groupRepository.findById(id).get();
+        g.setName(name);
+        groupRepository.save(g);
+        return "Group updated!";
+    }
+
+    @PostMapping(path = "/delG")
+    public @ResponseBody String deleteGroup(@RequestParam int id){
+        groupRepository.deleteById(id);
+        return "Group deleted!";
     }
 
     @GetMapping(path = "/allS")
