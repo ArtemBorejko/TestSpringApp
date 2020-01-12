@@ -31,12 +31,12 @@ public class MainController {
         return "Group saved";
     }
 
-    @GetMapping(path = "/allG")
+    @GetMapping(path = "/allS")
     public @ResponseBody Iterable<Student> getAllStudents(){
         return studentRepository.findAll();
     }
 
-    @GetMapping(path = "/allS")
+    @GetMapping(path = "/allG")
     public @ResponseBody Iterable<Group> getAllGroups(){
         return groupRepository.findAll();
     }

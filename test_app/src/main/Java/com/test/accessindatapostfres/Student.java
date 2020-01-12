@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String name;
     private Integer group_id;
 
@@ -18,7 +18,7 @@ public class Student {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class Student {
         return group_id;
     }
 
-    public void setGroup_id(int group_id) {
+    public void setGroup_id(Integer group_id) {
         this.group_id = group_id;
     }
 }
