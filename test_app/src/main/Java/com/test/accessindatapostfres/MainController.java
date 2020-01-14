@@ -1,18 +1,21 @@
 package com.test.accessindatapostfres;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 
 @Controller
 @RequestMapping(path = "/test", method = RequestMethod.GET)
 public class MainController {
 
-    @Autowired
     private GroupRepository groupRepository;
-    @Autowired
     private StudentRepository studentRepository;
 
+    public MainController(GroupRepository groupRepository, StudentRepository studentRepository) {
+        this.groupRepository = groupRepository;
+        this.studentRepository = studentRepository;
+    }
 
     @PostMapping(path = "/addS")
     public @ResponseBody String addNewStudent(@RequestParam String name, @RequestParam int group_id){
@@ -26,8 +29,8 @@ public class MainController {
     @PostMapping(path = "/updS")
     public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name, @RequestParam int group_id){
         Student s = studentRepository.findById(id).get();
-        s.setGroup_id(group_id);
         s.setName(name);
+        s.setGroup_id(group_id);
         studentRepository.save(s);
         return "Student updated!";
     }
@@ -69,4 +72,5 @@ public class MainController {
     public @ResponseBody Iterable<Group> getAllGroups(){
         return groupRepository.findAll();
     }
+
 }
