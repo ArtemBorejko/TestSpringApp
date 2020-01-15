@@ -2,8 +2,6 @@ package com.test.accessindatapostfres;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @Controller
 @RequestMapping(path = "/test", method = RequestMethod.GET)
 public class MainController {
