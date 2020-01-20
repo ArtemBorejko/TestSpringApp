@@ -15,19 +15,19 @@ public class MainController {
     }
 
     @PostMapping(path = "/addS")
-    public @ResponseBody String addNewStudent(@RequestParam String name, @RequestParam int group_id){
+    public @ResponseBody String addNewStudent(@RequestParam String name){
         Student s = new Student();
         s.setName(name);
-        s.setGroup_id(group_id);
+    
         studentRepository.save(s);
         return "Student saved";
     }
 
     @PostMapping(path = "/updS")
-    public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name, @RequestParam int group_id){
+    public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name){
         Student s = studentRepository.findById(id).get();
         s.setName(name);
-        s.setGroup_id(group_id);
+        
         studentRepository.save(s);
         return "Student updated!";
     }
