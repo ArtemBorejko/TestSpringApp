@@ -15,20 +15,42 @@ public class MainController {
     }
 
     @PostMapping(path = "/addS")
-    public @ResponseBody String addNewStudent(@RequestParam String name){
+    public @ResponseBody String addNewStudent(@RequestParam String name, @RequestParam String nameOfGroup){
         Student s = new Student();
-        s.setName(name);
-    
-        studentRepository.save(s);
+        if(groupRepository.findByName(nameOfGroup) != null){
+            Group g = groupRepository.findByName(nameOfGroup);
+            s.setGroup_id(g);
+            s.setName(name);
+            studentRepository.save(s);
+        }
+        else{
+            Group g = new Group();
+            g.setName(nameOfGroup);
+            s.setName(name);
+            s.setGroup_id(g);
+            groupRepository.save(g);
+            studentRepository.save(s);
+        }
         return "Student saved";
     }
 
     @PostMapping(path = "/updS")
-    public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name){
+    public @ResponseBody String updateStudent(@RequestParam int id, @RequestParam String name, @RequestParam String nameOfGroup){
         Student s = studentRepository.findById(id).get();
-        s.setName(name);
-        
-        studentRepository.save(s);
+        if(groupRepository.findByName(nameOfGroup) != null){
+            Group g = groupRepository.findByName(nameOfGroup);
+            s.setGroup_id(g);
+            s.setName(name);
+            studentRepository.save(s);
+        }
+        else{
+            Group g = new Group();
+            g.setName(nameOfGroup);
+            s.setName(name);
+            s.setGroup_id(g);
+            groupRepository.save(g);
+            studentRepository.save(s);
+        }
         return "Student updated!";
     }
 

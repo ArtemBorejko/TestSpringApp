@@ -4,10 +4,14 @@ import javax.persistence.*;
 
 @Entity(name = "groups")
 public class Group {
+
     @Id
     @GeneratedValue
     private int id;
     private String name;
+
+    public Group() {
+    }
 
     public int getId() {
         return id;
