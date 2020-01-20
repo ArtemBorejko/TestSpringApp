@@ -8,10 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
     private int id;
     private String name;
-    private Integer group_id;
 
 
     public int getId() {
@@ -28,13 +27,5 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getGroup_id() {
-        return group_id;
-    }
-
-    public void setGroup_id(Integer group_id) {
-        this.group_id = group_id;
     }
 }
