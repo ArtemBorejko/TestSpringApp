@@ -1,5 +1,5 @@
 # TestSpringApp
-<p>This WebApi writed in Java with using a Spring and Maven and can perform such tasks like:
+<p>This WebApi writed in Java with using a Spring and Maven 3.6.1 and can perform such tasks like:
   <ol>
     <li> Add/Update or delete a student.</li>
     <li> Show a list of students.</li>
