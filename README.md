@@ -5,7 +5,7 @@
     <li> <b>Show a list of students.</b></li>
     <li> <b>Add/Update or delete a group.</b></li>
     <li> <b>Show a list of groups.</b></li>
-    <li> <b>Show a list of groups and students in they.</b></li>
+    <li> <b>Show a list of groups and students in them.</b></li>
   </ol>
  </p>
 <p>For storing an information i used a PostgreSQL 9.5.</p>
